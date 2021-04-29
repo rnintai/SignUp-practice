@@ -1,18 +1,20 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <div v-if="isLogin">
+      {{ userInfo.first_name }} {{ userInfo.last_name }}님의 마이페이지
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "Home",
-  components: {
-    HelloWorld,
+  components: {},
+  computed: {
+    ...mapState(["userInfo", "isLogin"]),
   },
 };
 </script>
